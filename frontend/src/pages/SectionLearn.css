@@ -1,0 +1,496 @@
+.section-learn-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #1A1A2E;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.learn-header {
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+  background: #282840;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #6A5ACD;
+}
+
+.back-button:hover {
+  color: #6A5ACD;
+  background: #3A3A5A;
+}
+
+.section-info h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.section-info p {
+  font-size: 1.1rem;
+  color: #8A8A9A;
+  line-height: 1.6;
+}
+
+.progress-bar {
+  position: relative;
+  height: 16px;
+  background: #3A3A5A;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 1px solid #4A4A6A;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6A5ACD, #8A7ACD, #A8A8CD);
+  border-radius: 8px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+  pointer-events: none;
+  white-space: nowrap;
+  line-height: 1;
+  text-align: center;
+  min-width: 40px;
+}
+
+.content-container {
+  background: #282840;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid #3A3A5A;
+}
+
+.content-card {
+  padding: 2rem;
+}
+
+.content-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #5A5A7A;
+}
+
+.content-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6A5ACD, #8A7ACD);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.content-meta h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.duration {
+  font-size: 0.875rem;
+  color: #8A8A9A;
+  font-weight: 500;
+}
+
+.content-body {
+  line-height: 1.8;
+  color: #E0E0E0;
+  font-size: 1.1rem;
+}
+
+.content-body p {
+  margin-bottom: 1rem;
+}
+
+.content-body strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #3A3A5A;
+  border-top: 1px solid #5A5A7A;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6A5ACD, #8A7ACD);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #8A7ACD, #6A5ACD);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.3);
+}
+
+.btn-secondary {
+  background: #282840;
+  color: white;
+  border: 1px solid #6A5ACD;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #6A5ACD;
+  transform: translateY(-2px);
+}
+
+.completion-banner {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #10b981;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+}
+
+.loading {
+  color: #8A8A9A;
+}
+
+.error {
+  color: #ef4444;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+  .section-learn-container {
+    padding: 1rem;
+    padding-top: 80px; /* Add top padding to avoid mobile menu toggle overlap */
+  }
+  
+  .learn-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .back-button {
+    margin-top: 0.5rem; /* Add some top margin for better spacing */
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .section-info h1 {
+    font-size: 2rem;
+  }
+  
+  .section-info p {
+    font-size: 0.9rem;
+  }
+  
+  .content-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .content-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .content-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .content-header p {
+    font-size: 0.9rem;
+  }
+  
+  .content-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .content-body h3 {
+    font-size: 1.25rem;
+  }
+  
+  .content-body h4 {
+    font-size: 1.1rem;
+  }
+  
+  .content-body ul, 
+  .content-body ol {
+    padding-left: 1.5rem;
+  }
+  
+  .content-body li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    min-height: 44px; /* Better touch target */
+  }
+  
+  .completion-banner {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    bottom: 1rem;
+    padding: 0.875rem 1.25rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .loading, .error {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .section-learn-container {
+    padding: 0.75rem;
+    padding-top: 70px; /* Slightly less padding for smaller screens */
+  }
+  
+  .section-info h1 {
+    font-size: 1.75rem;
+  }
+  
+  .section-info p {
+    font-size: 0.85rem;
+  }
+  
+  .content-card {
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+  
+  .content-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .content-header p {
+    font-size: 0.85rem;
+  }
+  
+  .content-body {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .content-body h3 {
+    font-size: 1.1rem;
+  }
+  
+  .content-body h4 {
+    font-size: 1rem;
+  }
+  
+  .content-body ul, 
+  .content-body ol {
+    padding-left: 1.25rem;
+  }
+  
+  .content-body li {
+    margin-bottom: 0.375rem;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+  
+  .completion-banner {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+  
+  .loading, .error {
+    padding: 1.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* Remove hover effects on touch devices */
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .section-learn-container {
+    padding: 0.75rem;
+  }
+  
+  .section-info h1 {
+    font-size: 1.75rem;
+  }
+  
+  .section-info p {
+    font-size: 0.85rem;
+  }
+  
+  .content-card {
+    padding: 1.25rem;
+  }
+  
+  .content-header {
+    flex-direction: row;
+    text-align: left;
+    gap: 1rem;
+  }
+  
+  .content-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .content-header p {
+    font-size: 0.85rem;
+  }
+  
+  .content-body {
+    font-size: 0.9rem;
+  }
+  
+  .content-body h3 {
+    font-size: 1.1rem;
+  }
+  
+  .content-body h4 {
+    font-size: 1rem;
+  }
+  
+  .navigation-buttons {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  
+  .btn {
+    width: auto;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+  
+  .completion-banner {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+  
+  .loading, .error {
+    padding: 1.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,59 @@
+.app {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+  margin-left: 280px;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 80px;
+}
+
+/* Enhanced Responsive design */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+  
+  .main-content {
+    padding: 16px;
+    padding-top: 80px; /* Add top padding to avoid mobile menu toggle overlap */
+    margin-left: 0;
+    margin-top: 0;
+    min-height: calc(100vh - 60px); /* Account for mobile header */
+  }
+  
+  .main-content.sidebar-collapsed {
+    margin-left: 0;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 12px;
+    padding-top: 70px; /* Slightly less padding for smaller screens */
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .main-content {
+    padding: 12px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .main-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}

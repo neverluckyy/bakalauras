@@ -1,0 +1,193 @@
+module,section,screen_title,read_time_min,content_markdown
+Security Awareness Essentials,Phishing and Social Engineering,Introduction,2,"Social engineering is the art of tricking people to bypass security. In this section, you’ll learn what it looks like across email, calls, texts, and in person—and how to respond safely."
+Security Awareness Essentials,Phishing and Social Engineering,Key Concepts,5,"- Attack types: phishing (email), vishing (voice), smishing (SMS), pretexting, baiting, and tailgating.
+- Human levers: urgency, authority, curiosity, fear, and helpfulness.
+- Safe response: don’t click or reply; report and verify via trusted channels."
+Security Awareness Essentials,Phishing and Social Engineering,Real-World Examples,4,"**“IT Support” pretext:** Caller claims your account is locked and asks for your password. **Action:** Hang up and call the published IT number to verify.
+
+**USB baiting:** A drive labeled “Confidential_Salaries.xlsx” is found in the parking lot. **Action:** Don’t plug it in; hand it to IT/security.
+
+**Lobby tailgating:** Someone follows you through a badge door carrying boxes. **Action:** Politely stop them and ask them to badge in or meet reception."
+Security Awareness Essentials,Phishing and Social Engineering,Summary,2,"- Social engineering targets people—not systems.
+- Expect urgency or secrecy; verify independently.
+- Report suspicious messages using the official phishing/report button."
+Security Awareness Essentials,Passwords and MFA,Introduction,2,"Strong, unique passwords plus multi-factor authentication (MFA) stop most account takeovers. Here’s how to do it right."
+Security Awareness Essentials,Passwords and MFA,Key Concepts,5,"- Use long, unique passphrases; store them in a password manager.
+- MFA hierarchy: strongest → FIDO2/WebAuthn keys; then authenticator apps; push/SMS are weaker.
+- Watch for password reuse, password spraying, and MFA “push” fatigue."
+Security Awareness Essentials,Passwords and MFA,Real-World Examples,4,"**Credential stuffing:** Your old forum password unlocks your work email. **Action:** Use unique passwords and enable MFA everywhere.
+
+**Unexpected MFA prompt:** You get a login approval you didn’t start. **Action:** Deny it, change your password, and report.
+
+**Weak policy:** “Change every 30 days” with short passwords. **Action:** Prefer long passphrases; change only on compromise."
+Security Awareness Essentials,Passwords and MFA,Summary,2,"- Length + uniqueness beat frequent forced changes.
+- FIDO2 keys are most phishing-resistant.
+- If a password may be exposed: change it, kill active sessions, enable MFA."
+Security Awareness Essentials,Ransomware,Introduction,2,Ransomware locks (and often steals) data to extort payment. Prevention and fast containment are critical.
+Security Awareness Essentials,Ransomware,Key Concepts,5,"- Initial access: phishing, exposed RDP/VPN, stolen creds, unpatched systems.
+- Defense-in-depth: least privilege, patching, EDR, segmentation, and tested backups (3-2-1 with an offline copy).
+- “Double extortion”: attackers both encrypt and exfiltrate data."
+Security Awareness Essentials,Ransomware,Real-World Examples,4,"**Malicious attachment:** “Invoice.pdf.exe.” **Action:** Don’t open; report and quarantine.
+
+**Lateral movement:** One compromised laptop spreads across flat networks. **Action:** Segment networks; restrict admin rights.
+
+**Infection discovered:** Files start appending “.locked”. **Action:** Isolate the device, unplug from network, notify IR."
+Security Awareness Essentials,Ransomware,Summary,2,"- Backups must be frequent, tested, and at least one offline.
+- Speed matters: isolate first, then investigate.
+- Paying ransom doesn’t guarantee decryption or deletion."
+Security Awareness Essentials,Safe Internet Browsing,Introduction,2,"Browsing safely is about verifying sites, limiting exposure, and keeping software current."
+Security Awareness Essentials,Safe Internet Browsing,Key Concepts,5,"- HTTPS = encryption, not endorsement; still verify the domain.
+- Reduce risk: updates, ad/tracker blockers, least-privilege browsing (no local admin), sandbox/containers for risky sites.
+- Beware drive-by downloads and certificate warnings."
+Security Awareness Essentials,Safe Internet Browsing,Real-World Examples,4,"**Certificate warning on a login page:** Stop and use a known good bookmark; don’t click through.
+
+**Free software from a random site:** Use official vendor stores or repos only.
+
+**Public Wi‑Fi:** Use a VPN; avoid logging into sensitive accounts."
+Security Awareness Essentials,Safe Internet Browsing,Summary,2,"- Trust the domain, not the padlock alone.
+- Keep browsers/plugins patched.
+- Use bookmarks for sensitive logins; avoid unknown downloads."
+Security Awareness Essentials,Social Media Safety,Introduction,2,Social media is a goldmine for social engineers. Limit what you share and lock down your accounts.
+Security Awareness Essentials,Social Media Safety,Key Concepts,5,"- Oversharing fuels pretexts and answers security questions.
+- Verify friend/follow requests; impersonation accounts are common.
+- Enable MFA; review third-party app permissions."
+Security Awareness Essentials,Social Media Safety,Real-World Examples,4,"**Giveaway DMs asking for your login:** Never provide credentials; official promos don’t need passwords.
+
+**Fresh “coworker” account with few posts:** Confirm identity out-of-band before accepting or sharing.
+
+**Screenshots showing internal dashboards:** Redact or avoid posting; check for sensitive data."
+Security Awareness Essentials,Social Media Safety,Summary,2,"- Share less; verify more.
+- Turn on MFA and prune risky app permissions.
+- If compromised: regain access, change password, enable MFA, review sessions."
+Phishing Red Flags,Understanding Phishing,Introduction,2,"Phishing tricks you into clicking, downloading, or revealing secrets. Know the variants and the common goals."
+Phishing Red Flags,Understanding Phishing,Key Concepts,5,"- Variants: bulk phishing, spear phishing, clone phishing, quishing (QR), and pharming (DNS redirection).
+- Goals: steal credentials, deliver malware, or capture sensitive data.
+- Best action on suspicion: report via the phishing button—don’t interact."
+Phishing Red Flags,Understanding Phishing,Real-World Examples,4,"**Clone phishing:** A real vendor email is re‑sent but links are swapped. **Action:** Compare URLs; contact the vendor via known channels.
+
+**QR code on a parking meter:** Use the official app/site; avoid scanning unknown codes.
+
+**Pharming:** Typing the correct URL still lands on a fake site. **Action:** Check the certificate/URL carefully; report to IT."
+Phishing Red Flags,Understanding Phishing,Summary,2,"- Phishing spans many channels beyond email.
+- Personalization (spear phishing) increases believability.
+- When in doubt, report and verify independently."
+Phishing Red Flags,Identifying Suspicious Sender Information,Introduction,2,Attackers spoof names and domains to appear legitimate. Inspect the real sender—not just the display name.
+Phishing Red Flags,Identifying Suspicious Sender Information,Key Concepts,5,"- Look‑alike domains, extra words, or accented characters (homographs/Punycode).
+- Mismatch between From and Reply‑To; sudden domain changes from vendors.
+- Mail from real domains can still be malicious if the mailbox is compromised."
+Phishing Red Flags,Identifying Suspicious Sender Information,Real-World Examples,4,"**applé-security.com:** Treat as malicious; report.
+
+**“HR” display name + hr@company-secure-login.net:** External masquerading as internal; verify via official HR channels.
+
+**Vendor switches to “-payments.io” domain:** Call the known contact to confirm any change."
+Phishing Red Flags,Identifying Suspicious Sender Information,Summary,2,"- Check the full address and domain; don’t trust display names.
+- Out‑of‑band verification is your safety net.
+- Compromised real accounts show unusual behavior—stay alert."
+Phishing Red Flags,Spotting Urgent or Threatening Language,Introduction,2,Pressure tactics push you to act before thinking. Recognize the emotional levers and slow down.
+Phishing Red Flags,Spotting Urgent or Threatening Language,Key Concepts,5,"- Red flags: “final warning,” secrecy requests, countdowns, or threats.
+- Finance angle: urgent payment or wire requests are classic BEC signals.
+- Use trusted paths (bookmarks/official apps) instead of embedded links."
+Phishing Red Flags,Spotting Urgent or Threatening Language,Real-World Examples,4,"**Mailbox over quota:** Email says “login now or deletion.” **Action:** Use your normal portal; report the email.
+
+**Executive secrecy request for a same‑day wire:** Pause and call a known number to verify.
+
+**Gift cards demanded to avoid termination:** Fraud—report immediately."
+Phishing Red Flags,Spotting Urgent or Threatening Language,Summary,2,"- Urgency, secrecy, and fear are manipulation tools.
+- Legitimate requests still follow policy and approvals.
+- Verify before acting—especially for money or credentials."
+Phishing Red Flags,Recognising Suspicious Attachments,Introduction,2,Attachments can deliver malware. Know which types are risky and how to handle them.
+Phishing Red Flags,Recognising Suspicious Attachments,Key Concepts,5,"- Highest risk: executables, script files (.exe, .js), macro‑enabled docs, password‑protected archives from unknown senders.
+- Tricks: double extensions (invoice.pdf.exe), unusual file sizes.
+- Safer sharing: read‑only PDFs or secure portals with access controls."
+Phishing Red Flags,Recognising Suspicious Attachments,Real-World Examples,4,"**Password‑protected ZIP from an unknown sender:** Don’t open; report—attackers use passwords to evade scanners.
+
+**Macro‑enabled “payment_details.xlsm”:** Don’t enable macros; verify first.
+
+**Shipping notice with attachment:** Check your order in the retailer’s app/site—never open unsolicited attachments."
+Phishing Red Flags,Recognising Suspicious Attachments,Summary,2,"- Treat unexpected or executable attachments as hostile.
+- Verify the sender and scan/quarantine when needed.
+- Prefer safer formats and approved sharing portals."
+Phishing Red Flags,Recognising URL Manipulation,Introduction,2,Links often hide deception. Learn to read URLs and preview where they really go.
+Phishing Red Flags,Recognising URL Manipulation,Key Concepts,5,"- Verify the registered domain (e.g., example.co.uk); subdomains can mislead.
+- Hover to preview; beware mismatched link text vs. destination and shorteners.
+- Homograph/Punycode look‑alikes (paypaI.com) can fool the eye."
+Phishing Red Flags,Recognising URL Manipulation,Real-World Examples,4,"**company.com.secure-login.io login page:** It’s phishing; the real domain is secure-login.io.
+
+**Shortened link in a bank SMS:** Don’t tap—open your bank app or typed bookmark.
+
+**Query string asking for a password in the URL:** Never; secure sites don’t put credentials in URLs."
+Phishing Red Flags,Recognising URL Manipulation,Summary,2,"- Use HTTPS and the correct domain.
+- Visit sensitive sites via bookmarks or manually typed URLs.
+- If link text ≠ destination, don’t click—report."
+Business Email Compromise (BEC),Business Email Compromise: An Overview,Introduction,2,"BEC uses real or convincingly spoofed business email to redirect money or data. It’s subtle, targeted, and costly."
+Business Email Compromise (BEC),Business Email Compromise: An Overview,Key Concepts,5,"- Common objectives: change banking details, request wires, or harvest sensitive data.
+- Enablers: weak passwords, reused credentials, missing MFA, and poor verification.
+- Vendor email compromise (VEC): real vendor mailbox hijacked to alter payments."
+Business Email Compromise (BEC),Business Email Compromise: An Overview,Real-World Examples,4,"**Conversation hijack:** Attacker replies inside a real thread with “updated bank details.” **Action:** Verify via a known phone number.
+
+**Look‑alike domain for a supplier:** Check carefully; confirm out‑of‑band.
+
+**Inbox rules hide alerts:** Monitor and alert on suspicious forwarding/deletion rules."
+Business Email Compromise (BEC),Business Email Compromise: An Overview,Summary,2,"- BEC often looks legitimate because it rides real conversations.
+- Finance/AP and payroll teams are prime targets.
+- Strong verification workflows stop most BEC attempts."
+Business Email Compromise (BEC),Common Types of Business Email Compromise Attacks,Introduction,2,Know the main BEC playbooks so you can spot them fast.
+Business Email Compromise (BEC),Common Types of Business Email Compromise Attacks,Key Concepts,5,"- Invoice fraud / vendor banking changes.
+- Payroll diversion (changing an employee’s direct deposit).
+- Gift card scams and W‑2/data theft requests."
+Business Email Compromise (BEC),Common Types of Business Email Compromise Attacks,Real-World Examples,4,"**Vendor banking change to a new country:** Dual control + callback using a directory number.
+
+**Payroll update from “employee” near payday:** Use HR portal or call the employee at a known number.
+
+**Executive asks for gift cards for “clients”:** Refuse and verify; report as whaling."
+Business Email Compromise (BEC),Common Types of Business Email Compromise Attacks,Summary,2,"- Expect payment and payroll themes.
+- Attackers time requests for month‑end or busy periods.
+- Follow official processes; never rely solely on email."
+Business Email Compromise (BEC),Recognising Red Flags in Business Email Compromise,Introduction,2,Subtle clues reveal BEC. Train your eye for inconsistencies and pressure tactics.
+Business Email Compromise (BEC),Recognising Red Flags in Business Email Compromise,Key Concepts,5,"- Domain/logo anomalies; missing standard footers/disclaimers.
+- Unusual file‑sharing links or editable banking details in Word/Excel.
+- Requests to keep finance “off the thread” or to use email‑only."
+Business Email Compromise (BEC),Recognising Red Flags in Business Email Compromise,Real-World Examples,4,"**Invoice numbers out of sequence:** Cross‑check against purchase orders.
+
+**Supplier moves to a free mailbox (@gmail.com):** Verify with the supplier by phone.
+
+**Month‑end rush + secrecy:** Slow down; require approvals."
+Business Email Compromise (BEC),Recognising Red Flags in Business Email Compromise,Summary,2,"- Look for what’s missing as much as what’s present.
+- Isolation, secrecy, and new processes are red flags.
+- When in doubt, stop and verify out‑of‑band."
+Business Email Compromise (BEC),Preventing Business Email Compromise – Best Practices,Introduction,2,Process discipline + layered technical controls make BEC hard.
+Business Email Compromise (BEC),Preventing Business Email Compromise – Best Practices,Key Concepts,5,"- Payment changes: dual control + verified callback; maintain a trusted contact directory.
+- Email security: SPF/DKIM/DMARC, MFA on mail, monitor mailbox rules/forwarding.
+- Access controls: least privilege, conditional access, geo/device policies."
+Business Email Compromise (BEC),Preventing Business Email Compromise – Best Practices,Real-World Examples,4,"**Vendor onboarding/update:** Banking info submitted only via a secure portal; no changes by email. **Outcome:** Fraud blocked.
+
+**Mailbox monitoring:** Alerts for new auto‑forward rules. **Outcome:** Early detection of compromise.
+
+**Finance policy:** No wires without two approvals and a callback. **Outcome:** Prevents executive impersonation."
+Business Email Compromise (BEC),Preventing Business Email Compromise – Best Practices,Summary,2,"- Codify verification in policy; train and test regularly.
+- Secure mailboxes and monitor for stealthy rules.
+- Keep audit logs; they’re vital for investigations."
+Business Email Compromise (BEC),Responding to Business Email Compromise – What To Do,Introduction,2,"If BEC is suspected, move quickly to contain, recover, and communicate."
+Business Email Compromise (BEC),Responding to Business Email Compromise – What To Do,Key Concepts,5,"- First steps: notify IR, reset passwords, revoke tokens, remove forwarding/rules, and isolate affected systems.
+- If funds moved: contact the bank and law enforcement immediately.
+- Preserve evidence: headers, logs, emails; involve legal/privacy as required."
+Business Email Compromise (BEC),Responding to Business Email Compromise – What To Do,Real-World Examples,4,"**Credentials entered on a phishing site:** Change password, invalidate sessions, enable MFA, and review mailbox rules.
+
+**Funds sent to a mule account:** Call the bank’s fraud desk now; open a police report.
+
+**Compromised vendor thread:** Warn partners via verified channels; increase fraud checks."
+Business Email Compromise (BEC),Responding to Business Email Compromise – What To Do,Summary,2,"- Contain first; communicate next; then remediate root cause.
+- Speed improves the chance of recovering funds.
+- Post‑incident: tighten controls, monitor closely, and brief staff."
+Business Email Compromise (BEC),Requests from High-Level Executives (Whaling),Introduction,2,Whaling exploits authority. Attackers imitate executives to bypass controls.
+Business Email Compromise (BEC),Requests from High-Level Executives (Whaling),Key Concepts,5,"- Pressure + secrecy + urgency = classic whaling.
+- Personal/external email for payments is a red flag.
+- Dual control and out‑of‑band callbacks neutralize the pressure."
+Business Email Compromise (BEC),Requests from High-Level Executives (Whaling),Real-World Examples,4,"**“Buy gift cards now—keep this confidential.”:** Refuse; call the exec’s known number.
+
+**Calendar invite for a surprise “payment review.”:** Verify with the exec’s assistant; follow payment policy.
+
+**Wire request from ceo.company@gmail.com:** Reject; payments never proceed from personal accounts."
+Business Email Compromise (BEC),Requests from High-Level Executives (Whaling),Summary,2,"- Authority shouldn’t override policy.
+- Always verify executive requests via a known contact.
+- Banners and training help, but approvals stop fraud."

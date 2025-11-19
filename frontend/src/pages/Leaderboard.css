@@ -1,0 +1,639 @@
+.leaderboard-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: transparent; /* Remove the dark background to match main content */
+  min-height: 100vh;
+}
+
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.leaderboard-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff; /* Match the white text from other pages */
+  margin-bottom: 0.5rem;
+}
+
+.leaderboard-header p {
+  font-size: 1.1rem;
+  color: #E0E0E0; /* Lighter grey to match other pages */
+}
+
+.leaderboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.leaderboard-stats .stat-card {
+  background: linear-gradient(135deg, #4A4A6A 0%, #6A5ACD 100%) !important; /* Match the gradient from Home.css */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important; /* Match other cards */
+  border: 1px solid #6A5ACD !important; /* Match the border from other cards */
+  border-radius: 16px !important; /* Match the border radius from other cards */
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #4A4A6A 0%, #6A5ACD 100%) !important; /* Match the gradient from Home.css */
+  border-radius: 16px !important; /* Match the border radius from other cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important; /* Match other cards */
+  border: 1px solid #6A5ACD !important; /* Match the border from other cards */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  pointer-events: none;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(106, 90, 205, 0.3) !important; /* Match hover effect from Home.css */
+  background: linear-gradient(135deg, #5A5A7A 0%, #7A6ACD 100%) !important; /* Slightly lighter on hover */
+}
+
+.stat-card svg {
+  color: #ffffff; /* White icons like in the image */
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #6A5ACD, #8A7ACD); /* Match the icon background from Home.css */
+  padding: 8px;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff; /* White text like in the image */
+  margin-bottom: 0.25rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #E0E0E0; /* Lighter grey to match other pages */
+  font-weight: 500;
+}
+
+.leaderboard-list {
+  background: #282840; /* Match the background from Home.css module cards */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Match other cards */
+  overflow: hidden;
+  border: 1px solid #3A3A5A; /* Match the border from Home.css */
+}
+
+.leaderboard-header-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #1A1A2E; /* Match the darker background from App.css */
+  border-bottom: 1px solid #3A3A5A; /* Match the border from Home.css */
+  font-weight: 600;
+  color: #8A8A9A;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-items: center;
+}
+
+.leaderboard-entry {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #3A3A5A; /* Match the border from Home.css */
+  transition: all 0.3s ease;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.leaderboard-entry:hover {
+  background: rgba(106, 90, 205, 0.1);
+}
+
+.leaderboard-entry.current-user {
+  background: linear-gradient(135deg, rgba(106, 90, 205, 0.2) 0%, rgba(106, 90, 205, 0.1) 100%) !important;
+  border-left: 4px solid #6A5ACD !important;
+}
+
+.leaderboard-entry.rank-1:not(.current-user) {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+  border-left: 4px solid #FFD700;
+}
+
+.leaderboard-entry.rank-2:not(.current-user) {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(192, 192, 192, 0.1) 100%);
+  border-left: 4px solid #C0C0C0;
+}
+
+.leaderboard-entry.rank-3:not(.current-user) {
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(205, 127, 50, 0.1) 100%);
+  border-left: 4px solid #CD7F32;
+}
+
+.rank-column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.rank-number {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #6A5ACD;
+}
+
+.rank-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.rank-icon.gold {
+  color: #FFD700;
+}
+
+.rank-icon.silver {
+  color: #C0C0C0;
+}
+
+.rank-icon.bronze {
+  color: #CD7F32;
+}
+
+.rank-icon:not(.gold):not(.silver):not(.bronze) {
+  color: #8A8A9A;
+}
+
+.user-column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #3A3A5A; /* Match the background from Home.css */
+  border: 2px solid #6A5ACD;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #ffffff; /* White text to match other pages */
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.you-badge {
+  background: #6A5ACD;
+  color: white;
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: #E0E0E0; /* Lighter grey to match other pages */
+}
+
+
+
+.xp-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.xp-amount {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #6A5ACD;
+  margin-bottom: 0.25rem;
+  text-align: right;
+}
+
+.xp-label {
+  font-size: 0.75rem;
+  color: #8A8A9A;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: right;
+}
+
+.xp-progress {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.xp-progress .progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #3A3A5A;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #4A4A6A;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.xp-progress .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6A5ACD, #8A7ACD, #A8A8CD);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.xp-progress .progress-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #8A8A9A;
+}
+
+.empty-state svg {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  color: #6A5ACD;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #6A5ACD;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  color: #8A8A9A;
+}
+
+.user-not-ranked {
+  margin-top: 2rem;
+}
+
+.not-ranked-card {
+  background: #282840; /* Match the background from Home.css module cards */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Match other cards */
+  border: 1px solid #3A3A5A; /* Match the border from Home.css */
+}
+
+.not-ranked-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #6A5ACD;
+  margin-bottom: 1rem;
+}
+
+.user-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #1A1A2E; /* Match the darker background from App.css */
+  border-radius: 8px;
+  border: 1px solid #3A3A5A; /* Match the border from Home.css */
+}
+
+.progress-details {
+  flex: 1;
+}
+
+.progress-details .user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff; /* White text to match other pages */
+  margin-bottom: 0.25rem;
+}
+
+
+
+.progress-details .user-xp {
+  font-size: 0.875rem;
+  color: #E0E0E0; /* Lighter grey to match other pages */
+}
+
+.not-ranked-card p {
+  color: #8A8A9A;
+  font-style: italic;
+  margin: 0;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+}
+
+.loading {
+  color: #8A8A9A;
+}
+
+.error {
+  color: #ff4757;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+  .leaderboard-container {
+    padding: 1rem;
+    padding-top: 80px; /* Add top padding to avoid mobile menu toggle overlap */
+  }
+  
+  .leaderboard-header h1 {
+    font-size: 2rem;
+  }
+  
+  .leaderboard-header p {
+    font-size: 1rem;
+  }
+  
+  .leaderboard-stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .stat-card {
+    padding: 1.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.75rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .leaderboard-header-row,
+  .leaderboard-entry {
+    grid-template-columns: 60px 1fr 80px;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .user-info {
+    gap: 0.75rem;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .user-name {
+    font-size: 0.875rem;
+  }
+  
+  .user-email {
+    font-size: 0.75rem;
+  }
+  
+  .xp-amount {
+    font-size: 1rem;
+  }
+  
+  .empty-state {
+    padding: 3rem 1rem;
+  }
+  
+  .empty-state h3 {
+    font-size: 1.25rem;
+  }
+  
+  .empty-state p {
+    font-size: 0.9rem;
+  }
+  
+  .not-ranked-card {
+    padding: 1.25rem;
+  }
+  
+  .not-ranked-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .user-progress {
+    padding: 0.875rem;
+  }
+  
+  .progress-details .user-name {
+    font-size: 1rem;
+  }
+  
+  .progress-details .user-xp {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .leaderboard-container {
+    padding: 0.75rem;
+    padding-top: 70px; /* Slightly less padding for smaller screens */
+  }
+  
+  .leaderboard-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .leaderboard-header p {
+    font-size: 0.9rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  .leaderboard-header-row,
+  .leaderboard-entry {
+    grid-template-columns: 50px 1fr 70px;
+    gap: 0.5rem;
+    padding: 0.875rem;
+  }
+  
+  .user-info {
+    gap: 0.5rem;
+  }
+  
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .user-name {
+    font-size: 0.8rem;
+  }
+  
+  .user-email {
+    font-size: 0.7rem;
+  }
+  
+  .xp-amount {
+    font-size: 0.9rem;
+  }
+  
+  .xp-label {
+    font-size: 0.65rem;
+  }
+  
+  .empty-state {
+    padding: 2rem 0.75rem;
+  }
+  
+  .empty-state h3 {
+    font-size: 1.1rem;
+  }
+  
+  .empty-state p {
+    font-size: 0.85rem;
+  }
+  
+  .not-ranked-card {
+    padding: 1rem;
+  }
+  
+  .not-ranked-card h3 {
+    font-size: 1rem;
+  }
+  
+  .user-progress {
+    padding: 0.75rem;
+  }
+  
+  .progress-details .user-name {
+    font-size: 0.9rem;
+  }
+  
+  .progress-details .user-level,
+  .progress-details .user-xp {
+    font-size: 0.75rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .stat-card:active {
+    transform: scale(0.98);
+  }
+  
+  .leaderboard-entry:active {
+    background: rgba(106, 90, 205, 0.15);
+  }
+  
+  /* Remove hover effects on touch devices */
+  .stat-card:hover {
+    transform: none;
+  }
+  
+  .leaderboard-entry:hover {
+    background: transparent;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .leaderboard-container {
+    padding: 0.75rem;
+  }
+  
+  .leaderboard-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .leaderboard-header p {
+    font-size: 0.9rem;
+  }
+  
+  .leaderboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  .leaderboard-header-row,
+  .leaderboard-entry {
+    grid-template-columns: 60px 1fr 80px;
+    gap: 0.75rem;
+    padding: 0.875rem;
+  }
+}
