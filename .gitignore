@@ -1,0 +1,9 @@
+
+node_modules
+npm-debug.log
+.DS_Store
+coverage
+.nyc_output
+.env
+/backend/database/learning_app.db
+/backend/database/learning_app.db-journal

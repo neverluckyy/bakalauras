@@ -12,6 +12,9 @@ import SectionQuiz from './pages/SectionQuiz';
 import Leaderboard from './pages/Leaderboard';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import AdminLayout from './pages/AdminLayout';
+import Admin from './pages/Admin';
+import AdminUsers from './pages/AdminUsers';
 import './App.css';
 
 function AppContent() {
@@ -55,6 +58,15 @@ function AppContent() {
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<Admin />} />
+              <Route path="users" element={<AdminUsers />} />
+              {/* Add other admin routes here later */}
+            </Route>
+
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

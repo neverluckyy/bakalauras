@@ -530,28 +530,125 @@ router.get('/users', (req, res) => {
   });
 });
 
+// Get single user
+router.get('/users/:id', (req, res) => {
+  const db = getDatabase();
+
+  db.get(`
+    SELECT
+      id,
+      email,
+      display_name,
+      avatar_key,
+      total_xp,
+      level,
+      is_admin,
+      created_at,
+      updated_at
+    FROM users
+    WHERE id = ?
+  `, [req.params.id], (err, user) => {
+    if (err) {
+      return res.status(500).json({ error: 'Database error' });
+    }
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.json(user);
+  });
+});
+
 // Update user (promote to admin, etc.)
 router.put('/users/:id', (req, res) => {
-  const { is_admin } = req.body;
+  const { display_name, email, avatar_key, is_admin } = req.body;
   
-  if (is_admin === undefined) {
-    return res.status(400).json({ error: 'is_admin is required' });
+  if (!display_name && !email && !avatar_key && is_admin === undefined) {
+    return res.status(400).json({ error: 'At least one field to update is required' });
   }
-  
+
   const db = getDatabase();
-  db.run(
-    'UPDATE users SET is_admin = ? WHERE id = ?',
-    [is_admin ? 1 : 0, req.params.id],
-    function(err) {
-      if (err) {
-        return res.status(500).json({ error: 'Database error' });
+
+  let updates = [];
+  let params = [];
+  
+  if (display_name) {
+    updates.push('display_name = ?');
+    params.push(display_name);
+  }
+
+  if (email) {
+    updates.push('email = ?');
+    params.push(email);
+  }
+
+  if (avatar_key) {
+    updates.push('avatar_key = ?');
+    params.push(avatar_key);
+  }
+
+  if (is_admin !== undefined) {
+    updates.push('is_admin = ?');
+    params.push(is_admin ? 1 : 0);
+  }
+
+  params.push(req.params.id);
+
+  const sql = `UPDATE users SET ${updates.join(', ')}, updated_at = CURRENT_TIMESTAMP WHERE id = ?`;
+
+  db.run(sql, params, function(err) {
+    if (err) {
+      if (err.message.includes('UNIQUE')) {
+        return res.status(409).json({ error: 'Email already in use' });
       }
+      return res.status(500).json({ error: 'Database error' });
+    }
+    if (this.changes === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.json({ message: 'User updated successfully' });
+  });
+});
+
+// Delete user
+router.delete('/users/:id', (req, res) => {
+  const db = getDatabase();
+
+  // In a real-world scenario, you might want to handle user deletion more gracefully
+  // (e.g., anonymize data instead of hard delete), but for now, we'll delete.
+  db.serialize(() => {
+    db.run('BEGIN TRANSACTION');
+
+    // Delete associated progress first to maintain referential integrity
+    db.run('DELETE FROM user_progress WHERE user_id = ?', [req.params.id], (err) => {
+      if (err) {
+        db.run('ROLLBACK');
+        return res.status(500).json({ error: 'Database error while deleting progress' });
+      }
+    });
+
+    db.run('DELETE FROM user_learning_progress WHERE user_id = ?', [req.params.id], (err) => {
+      if (err) {
+        db.run('ROLLBACK');
+        return res.status(500).json({ error: 'Database error while deleting learning progress' });
+      }
+    });
+
+    // Then delete the user
+    db.run('DELETE FROM users WHERE id = ?', [req.params.id], function(err) {
+      if (err) {
+        db.run('ROLLBACK');
+        return res.status(500).json({ error: 'Database error while deleting user' });
+      }
+
       if (this.changes === 0) {
+        db.run('ROLLBACK');
         return res.status(404).json({ error: 'User not found' });
       }
-      res.json({ message: 'User updated successfully' });
-    }
-  );
+
+      db.run('COMMIT');
+      res.json({ message: 'User deleted successfully' });
+    });
+  });
 });
 
 // Get user statistics

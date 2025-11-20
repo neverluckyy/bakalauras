@@ -7,6 +7,11 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
+export function useAdmin() {
+  const { isAdmin } = useAuth();
+  return isAdmin;
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -72,6 +77,8 @@ export function AuthProvider({ children }) {
     setUser(updatedUser);
   };
 
+  const isAdmin = user ? user.is_admin === 1 : false;
+
   const value = {
     user,
     loading,
@@ -79,7 +86,8 @@ export function AuthProvider({ children }) {
     register,
     logout,
     updateUser,
-    checkAuth
+    checkAuth,
+    isAdmin
   };
 
   return (

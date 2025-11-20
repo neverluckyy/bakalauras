@@ -1,5 +1,7 @@
 const { spawn } = require('child_process');
 const axios = require('axios');
+const sqlite3 = require('sqlite3');
+const path = require('path');
 
 // Configure axios
 axios.defaults.withCredentials = true;
@@ -73,6 +75,18 @@ async function testAuthentication() {
       display_name: 'Auto Test User'
     });
     log('✅ Registration successful: ' + registerResponse.data.message, 'green');
+
+    // Make the new user an admin
+    const dbPath = path.join(__dirname, 'backend/database/learning_app.db');
+    const db = new sqlite3.Database(dbPath);
+    await new Promise((resolve, reject) => {
+      db.run('UPDATE users SET is_admin = 1 WHERE email = ?', [testEmail], function(err) {
+        if (err) return reject(err);
+        log(`✅ User ${testEmail} promoted to admin`, 'green');
+        resolve();
+      });
+    });
+    db.close();
     
     // Test 3: Login with test user
     log('\n3. Testing user login...', 'cyan');

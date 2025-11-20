@@ -6,6 +6,7 @@ import {
   BookOpen, 
   Trophy, 
   User,
+  Shield,
   LogOut,
   ChevronLeft,
   ChevronRight
@@ -13,7 +14,7 @@ import {
 import './Sidebar.css';
 
 function Sidebar({ isCollapsed, onToggle }) {
-  const { logout } = useAuth();
+  const { logout, isAdmin } = useAuth();
   const location = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -55,6 +56,10 @@ function Sidebar({ isCollapsed, onToggle }) {
     { path: '/leaderboard', icon: Trophy, label: 'Leaderboards', category: 'LEARNING' },
     { path: '/profile', icon: User, label: 'Profile', category: 'ACCOUNT' },
   ];
+
+  if (isAdmin) {
+    navItems.push({ path: '/admin', icon: Shield, label: 'Admin', category: 'ACCOUNT' });
+  }
 
   const groupedItems = navItems.reduce((acc, item) => {
     if (!acc[item.category]) {
