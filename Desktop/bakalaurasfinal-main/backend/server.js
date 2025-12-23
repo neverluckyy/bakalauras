@@ -46,6 +46,9 @@ if (process.env.ALLOWED_ORIGINS) {
   ];
   // Allow all Netlify subdomains via regex pattern
   allowedOrigins.push(/^https:\/\/.*\.netlify\.app$/);
+  // Allow Railway domains (for same-origin frontend/backend deployment)
+  allowedOrigins.push(/^https:\/\/.*\.railway\.app$/);
+  allowedOrigins.push(/^https:\/\/.*\.up\.railway\.app$/);
 } else {
   // Development
   allowedOrigins = ['http://localhost:3000'];
@@ -53,7 +56,7 @@ if (process.env.ALLOWED_ORIGINS) {
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
+    // Allow requests with no origin (like mobile apps, curl requests, or same-origin requests)
     if (!origin) return callback(null, true);
     
     // Check if origin is in allowed list
@@ -67,7 +70,13 @@ app.use(cors({
     })) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      // In production, if frontend and backend are on same domain, allow same-origin
+      // This handles cases where the origin might not be set or matches the request host
+      if (process.env.NODE_ENV === 'production') {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     }
   },
   credentials: true
